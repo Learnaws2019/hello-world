@@ -5,15 +5,16 @@ version: 2.1
   # Declare a dependency on the welcome-orb
  # welcome: circleci/welcome-orb@0.4.1
 # Orchestrate or schedule a set of jobs
-
+defaults: &defaults
+  docker:
+      - image: circleci/node:13.8.0
 jobs:
   print_hello:
-    docker: &ad1
-      - image: circleci/node:13.8.0
+    <<: *defaults
     steps:
       - run: echo "Hellooooo...."
   print_env-var:
-    <<: *ad1 
+    <<: *defaults
     steps:
       - checkout
       - run:
