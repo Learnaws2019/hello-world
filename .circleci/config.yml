@@ -12,16 +12,20 @@ jobs:
       - image: circleci/node:13.8.0
     steps:
       - run: echo "Hellooooo...."
-  print_world:
+  print_env-var:
     docker:
       - image: circleci/node:13.8.0
     steps:
-      - run: echo ${MYFIRST_VAR}
+      - checkout
+      - run:
+          name: "echo an env var that is part of our project"
+            command: 
+              echo ${MYFIRST_VAR}
     
 workflows:
   # Name the workflow "welcome"
   version: 2
-  TEST01:
+  TEST_ENV-VAR:
     # Run the welcome/run job in its own container
     jobs:
       #- welcome/run
