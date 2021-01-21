@@ -8,13 +8,12 @@ version: 2.1
 
 jobs:
   print_hello:
-    docker:
+    docker: &ad1
       - image: circleci/node:13.8.0
     steps:
       - run: echo "Hellooooo...."
   print_env-var:
-    docker:
-      - image: circleci/node:13.8.0
+    <<: *ad1 
     steps:
       - checkout
       - run:
