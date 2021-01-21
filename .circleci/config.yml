@@ -19,8 +19,8 @@ jobs:
       - checkout
       - run:
           name: "echo an env var that is part of our project"
-            command: 
-              echo ${MYFIRST_VAR}
+          command: 
+            echo ${MYFIRST_VAR}
     
 workflows:
   # Name the workflow "welcome"
@@ -30,6 +30,6 @@ workflows:
     jobs:
       #- welcome/run
       - print_hello
-      - print_world :
+      - print_env-var :
           requires:
             - print_hello
