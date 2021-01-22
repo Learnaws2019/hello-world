@@ -21,12 +21,15 @@ jobs:
           name: "echo an env var that is part of our project"
           command: 
             echo $myname
-            return 1
-   myfault:
+            
+  myfault:
     <<: *defaults
     steps:
-      - run: echo "My First Fault"
-      when: on_fail
+      - run: return 1
+      - run: 
+          command: echo "test error"
+          when: on_fail
+        
     
 workflows:
   # Name the workflow "welcome"
@@ -39,7 +42,7 @@ workflows:
       - print_env-var :
           requires:
             - print_hello
-      - myfault:
+      - myfault :
           requires:
             - print_env-var
             
