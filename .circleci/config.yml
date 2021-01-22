@@ -25,7 +25,7 @@ jobs:
   myfault:
     <<: *defaults
     steps:
-      - run: return 0
+      - run: echo "success"
       - run: 
           command: echo "test error"
           when: on_fail
